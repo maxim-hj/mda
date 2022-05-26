@@ -1,8 +1,10 @@
 @import 'second';
-@import 'reset';
+@import 'vars';
+@import 'mixins';
+@import 'settings';
 
 body {
-  font-family: 'Jos';
+  font-family: var(--font-family);
   font-weight: 400;
 }
 
