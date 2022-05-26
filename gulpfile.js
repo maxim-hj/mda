@@ -7,7 +7,7 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
-//const svgSprite = require('gulp-svg-sprite');
+const svgSprite = require('gulp-svg-sprite');
 const ttf2woff = require('gulp-ttf2woff');
 const ttf2woff2 = require('gulp-ttf2woff2');
 const fs = require('fs');
@@ -67,17 +67,19 @@ const fontsStyle = (done) => {
   done();
 };
 
-/*const svgSprites = () => {
-	return src('./src/img/**.svg')
-		.pipe(svgSprite({
-			mode: {
-				stack: {
-					sprite: "../sprite.svg"
-				}
-			}
-		}))
-		.pipe(dest('./app/img'))
-}*/
+const svgSprites = () => {
+  return src('./src/img/sprite/**.svg')
+    .pipe(
+      svgSprite({
+        mode: {
+          stack: {
+            sprite: '../sprite.svg',
+          },
+        },
+      })
+    )
+    .pipe(dest('./app/img'));
+};
 
 const styles = () => {
   return src('./src/scss/**/*.scss')
@@ -186,7 +188,7 @@ const watchFiles = () => {
   watch('./src/img/**.png', imgToApp);
   watch('./src/img/**.jpeg', imgToApp);
   watch('./src/img/**.svg', imgToApp);
-  //watch('./src/img/**.svg', svgSprites);
+  watch('./src/img/sprite/**.svg', svgSprites);
   watch('./src/resources/**', resources);
   watch('./src/fonts/**.ttf', fonts);
   watch('./src/fonts/**.ttf', fontsStyle);
@@ -199,9 +201,10 @@ exports.fileinclude = htmlInclude;
 
 exports.default = series(
   clean,
-  parallel(htmlInclude, scripts, fonts, resources, imgToApp),
+  parallel(htmlInclude, scripts, fonts, resources, imgToApp, svgSprites),
   fontsStyle,
   styles,
+  svgSprites,
   watchFiles
 );
 
@@ -275,7 +278,7 @@ const scriptsBuild = () => {
 
 exports.build = series(
   clean,
-  parallel(htmlInclude, scriptsBuild, fonts, resources, imgToApp),
+  parallel(htmlInclude, scriptsBuild, fonts, resources, imgToApp, svgSprites),
   fontsStyle,
   stylesBuild,
   tinypng
