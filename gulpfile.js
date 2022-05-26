@@ -180,6 +180,7 @@ const watchFiles = () => {
   });
 
   watch('./src/scss/**/*.scss', styles);
+  watch('./src/partials/*.html', htmlInclude);
   watch('./src/index.html', htmlInclude);
   watch('./src/img/**.jpg', imgToApp);
   watch('./src/img/**.png', imgToApp);
