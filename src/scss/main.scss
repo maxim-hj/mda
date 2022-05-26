@@ -1,10 +1,10 @@
-@import "second";
-@import "reset";
+@import 'second';
+@import 'reset';
 
 body {
-	font-family: "Jos";
-	font-weight: 400;
+  font-family: 'Jos';
+  font-weight: 400;
 }
 
-
-@import "fonts";
+@import 'fonts';
+@import './components/header';
