@@ -15,10 +15,15 @@
   <div class="container">
     <div class="auth">
       <button class="auth__btn">Авторизоваться</button>
-      <div class="modal">
+      <div class="modal hidden">
         <div class="modal__window">
           <h3 class="modal__title">Авторизация</h3>
           <p class="modal__descr">Введите никнейм и пароль</p>
+          <button class="modal__close">
+            <svg class="modal__close-svg">
+              <use xlink:href="img/sprite.svg#close"></use>
+            </svg>
+          </button>
           <form class="modal__forms" action="">
             <input
               class="modal__forms-nickname"
