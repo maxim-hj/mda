@@ -18,6 +18,7 @@ const uglify = require('gulp-uglify-es').default;
 const tiny = require('gulp-tinypng-compress');
 const gutil = require('gulp-util');
 const ftp = require('vinyl-ftp');
+//тест изменений
 
 
 const fonts = () => {
