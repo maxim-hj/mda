@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Report v1.2.2</title>
     <link rel="stylesheet" href="css/main.min.css" />
   </head>
 
@@ -54,18 +54,33 @@
       <p class="panel__status">Ваш статус: <span class="your-status"></span></p>
     </div>
     <div class="tabs">
-      <button class="tabs__rep tab-btn tab-btn--active">Задать вопрос</button>
-      <button class="tabs__allrep tab-btn">Все вопросы</button>
+      <ul class="tabs__list">
+        <li class="tabs__item">
+          <button class="tabs__btn tabs__btn--active" data-tabs-path="rep">
+            Задать вопрос
+          </button>
+        </li>
+        <li class="tabs__item">
+          <button class="tabs__btn" data-tabs-path="allrep">Все вопросы</button>
+        </li>
+        <li class="tabs__item">
+          <button class="tabs__btn hidden" data-tabs-path="admpan">
+            Панель админа
+          </button>
+        </li>
+      </ul>
     </div>
-    <form class="panel__form" action="">
+    <form class="panel__form panel--active" action="" data-target-path="rep">
       <label class="panel__lable" for="">Задать вопрос в репорт</label>
       <input class="panel__rep" type="text" />
       <button class="panel__btn" type="submit">
         Отправить репорт администрации
       </button>
     </form>
+    <div class="allquestions" data-target-path="allrep">Здесь все вопросы</div>
+    <div class="admpanel" data-target-path="admpan">Здесь адм панелька</div>
 
-    <div class="layout">
+    <!-- <div class="layout">
       <input
         name="nav"
         type="radio"
@@ -169,7 +184,7 @@
           Contact
         </span>
       </label>
-    </div>
+    </div> -->
   </div>
 </section>
 
